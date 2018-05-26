@@ -1,20 +1,29 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Header, Image, Card } from 'semantic-ui-react'
 
 class Details extends Component {
     render () {
         if(!this.props.contact) {
-            return (<p>Choose auto..</p>)
+            return (<p>Choose contact..</p>)
         };
 
         return (
-            <div>
-                <h2>{this.props.contact.name}</h2>
-                <img src={this.props.contact.photo} />
-                <p>Phone: {this.props.contact.phone}</p>
-                <p>E-mail: {this.props.contact.email}</p>
-                <p>Company: {this.props.contact.company}</p>
-            </div>
+            <Card>
+                <Image src={this.props.contact.photo} />
+                <Card.Content>
+                    <Card.Header>
+                        {this.props.contact.name}
+                    </Card.Header>
+                    <Card.Meta>
+                        {this.props.contact.company}
+                    </Card.Meta>
+                    <Card.Description>
+                        <p>Phone: {this.props.contact.phone}</p>
+                        <p>E-mail: {this.props.contact.email}</p>
+                    </Card.Description>
+                </Card.Content>
+            </Card>
         );
     };
 };
