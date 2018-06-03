@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactList from '../containers/contactlist.js';
-import Details from '../containers/details.js'
-import { Header, Grid } from 'semantic-ui-react'
+import Details from '../containers/details.js';
+import { Header, Grid, Input, Container } from 'semantic-ui-react';
 
 const WebPage = () => (
     <Grid>
@@ -12,7 +12,7 @@ const WebPage = () => (
         <Grid.Column width={10}>
             <Header size='large'>Details:</Header>
             <Details />
-        </Grid.Column>
+        </Grid.Column>    
     </Grid>
 );
 

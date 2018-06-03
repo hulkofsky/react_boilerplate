@@ -4,3 +4,10 @@ export const select = (contact) => {
         payload: contact
     };
 };
+
+export const search = (searchCriteria) => { 
+    return {
+        type: "SEARCH",
+        payload: searchCriteria
+    };
+};

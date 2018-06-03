@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {select} from '../actions/actions';
-import { Image, List } from 'semantic-ui-react'
+import {select, search} from '../actions/actions';
+import { Image, List, Input } from 'semantic-ui-react'
 
 class ContactList extends Component {
-    showlist(){
+
+    showlist(searchCriteria){
+        console.log(searchCriteria, 'in showlist');
         return this.props.contacts.map((contact) => {
             return (
                 <List.Item onClick={() => this.props.select(contact)} key={contact.id}>
@@ -18,11 +20,21 @@ class ContactList extends Component {
             );
         });
     };
+
     render() {
         return (
-            <List animated celled verticalAlign='middle'>
-                {this.showlist()}
-            </List>
+            <div>
+                <Input icon='search' iconPosition='left' placeholder='Search users...' onChange={() => {
+                            const searchCriteria = this.props.search(document.querySelector('input[type=text]').value).payload;
+                            
+                            return (
+                                <List animated celled verticalAlign='middle'>
+                                    {this.showlist(searchCriteria)}
+                                </List>
+                            );
+                        }
+                    }/>
+            </div>
         );
     }
 }
@@ -34,7 +46,7 @@ function mapStateToProps (state) {
 }
 
 function matchDispatchToProps (dispatch) {
-    return bindActionCreators({select: select}, dispatch);
+    return bindActionCreators({select: select, search: search}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ContactList);

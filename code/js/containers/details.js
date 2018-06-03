@@ -30,7 +30,7 @@ class Details extends Component {
 
 function mapStateToProps (state) {
     return {
-        contact: state.active
+        contact: state.action
     };
 }
 

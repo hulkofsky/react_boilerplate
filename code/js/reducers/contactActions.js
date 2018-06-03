@@ -3,6 +3,9 @@ export default function(state=null, action) {
         case "CONTACT_SELECTED":
             return action.payload;
             break;
+        case "SEARCH":
+            return action.payload;
+            break;
         default:
             return state;
     }
